@@ -2,7 +2,6 @@
   command = "npm run build:prod"
   publish = "dist"
 
-# Redirects for SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"

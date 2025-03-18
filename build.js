@@ -52,7 +52,7 @@ try {
 // Step 4: Build
 console.log(`\n${colors.cyan}Step 4: Building production bundle...${colors.reset}`);
 try {
-  execSync('npm run build', { stdio: 'inherit' });
+  execSync('tsc && vite build', { stdio: 'inherit' });
   console.log(`${colors.green}✓ Production build completed${colors.reset}`);
 } catch (error) {
   console.error(`${colors.yellow}× Build failed: ${error.message}${colors.reset}`);
