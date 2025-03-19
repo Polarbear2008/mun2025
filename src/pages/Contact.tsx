@@ -7,7 +7,7 @@ const contactMethods = [
   {
     icon: Mail,
     title: "Email Us",
-    description: "Get in touch via email for general inquiries.",
+    description: "Get in touch via email for general inquiries and questions.",
     value: "munfps@gmail.com",
     action: "Email",
     link: "mailto:munfps@gmail.com"
