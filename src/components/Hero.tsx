@@ -4,6 +4,7 @@ import { ChevronRight, Calendar, Clock, MapPin, Users } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
 import { Link } from 'react-router-dom';
 import { CustomButton } from './ui/custom-button';
+import { transitionVariants } from '@/lib/transition-utils';
 
 const conferenceDate = new Date('2025-04-02T09:00:00');
 const conferenceLocation = 'Fergana Presidential School, Uzbekistan';
@@ -61,34 +62,73 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [currentPhrase, isDeleting, phraseIndex]);
 
+  // Background animation variants
+  const backgroundVariants = {
+    initial: { opacity: 0 },
+    animate: { 
+      opacity: 0.05, 
+      transition: { 
+        duration: 2,
+        ease: [0.25, 0.1, 0.25, 1]
+      }
+    }
+  };
+
+  // Subtle floating light particles
+  const particles = Array.from({ length: 25 }).map((_, index) => ({
+    id: index,
+    initialX: Math.random() * window.innerWidth,
+    initialY: Math.random() * window.innerHeight,
+    size: Math.random() * 2 + 1.5, // Small circles
+    opacity: Math.random() * 0.3 + 0.1, // Subtle opacity
+    duration: Math.random() * 80 + 60, // Very slow movement
+    delay: Math.random() * 10
+  }));
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-diplomatic-900 via-diplomatic-800 to-diplomatic-700">
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
           className="absolute top-0 left-0 w-full h-full bg-world-map bg-no-repeat bg-center opacity-5"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.05 }}
-          transition={{ duration: 2 }}
+          variants={backgroundVariants}
+          initial="initial"
+          animate="animate"
         />
         
-        {Array.from({ length: 20 }).map((_, index) => (
+        {/* Subtle floating light particles */}
+        {particles.map((particle) => (
           <motion.div
-            key={index}
-            className="absolute w-2 h-2 rounded-full bg-gold-300"
+            key={particle.id}
+            className="absolute rounded-full bg-gold-300"
+            style={{ 
+              width: `${particle.size}px`, 
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+              boxShadow: `0 0 ${particle.size}px rgba(255, 215, 0, 0.15)`
+            }}
             initial={{ 
-              x: Math.random() * window.innerWidth, 
-              y: Math.random() * window.innerHeight,
-              opacity: Math.random() * 0.5 + 0.1
+              x: particle.initialX, 
+              y: particle.initialY
             }}
             animate={{ 
-              y: [null, Math.random() * -100, Math.random() * 100, null],
-              x: [null, Math.random() * 100, Math.random() * -100, null],
-              opacity: [null, Math.random() * 0.8, 0.1, null]
+              y: [
+                particle.initialY, 
+                particle.initialY - 40 - Math.random() * 30, 
+                particle.initialY + 40 + Math.random() * 30,
+                particle.initialY
+              ],
+              x: [
+                particle.initialX, 
+                particle.initialX + 40 + Math.random() * 30, 
+                particle.initialX - 40 - Math.random() * 30,
+                particle.initialX
+              ]
             }}
             transition={{ 
-              duration: Math.random() * 20 + 10, 
+              duration: particle.duration, 
               repeat: Infinity, 
-              ease: "linear" 
+              ease: "easeInOut",
+              delay: particle.delay
             }}
           />
         ))}
@@ -99,7 +139,12 @@ const Hero = () => {
             scale: [1, 1.2, 1],
             opacity: [0.1, 0.15, 0.1],
           }}
-          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
+          transition={{ 
+            duration: 10, 
+            repeat: Infinity, 
+            repeatType: "reverse",
+            ease: "easeInOut" 
+          }}
         />
         <motion.div 
           className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-gold-600 blur-3xl"
@@ -107,41 +152,40 @@ const Hero = () => {
             scale: [1, 1.1, 1],
             opacity: [0.05, 0.08, 0.05],
           }}
-          transition={{ duration: 8, repeat: Infinity, repeatType: "reverse" }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            repeatType: "reverse",
+            ease: "easeInOut" 
+          }}
         />
       </div>
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            variants={transitionVariants.containerVariants}
+            initial="initial"
+            animate="animate"
             className="text-white"
           >
             <motion.span 
+              variants={transitionVariants.slideInDown}
               className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-sm text-sm font-medium mb-6"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
             >
               Model United Nations
             </motion.span>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
               <motion.span
+                variants={transitionVariants.slideInLeft}
                 className="block text-white"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
               >
                 <span className="text-gradient-gold">FPSMUN</span> Season 4
               </motion.span>
               <motion.span 
+                variants={transitionVariants.fadeVariants}
                 className="block text-gold-300 mt-2 min-h-[40px]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.5 }}
               >
                 {currentPhrase}
                 <span className="animate-pulse ml-1">|</span>
@@ -149,25 +193,29 @@ const Hero = () => {
             </h1>
             
             <motion.p 
+              variants={transitionVariants.slideInLeft}
               className="text-lg text-white/80 mb-8 max-w-xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.5 }}
             >
               Join delegates from across Uzbekistan to debate pressing global issues, develop 
               leadership skills, and forge valuable connections at our prestigious Model UN conference.
             </motion.p>
             
             <motion.div 
+              variants={transitionVariants.containerVariants}
               className="flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.8 }}
             >
               <motion.div
-                whileHover={{ scale: 1.05, y: -5 }}
+                variants={transitionVariants.itemVariants}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -5,
+                  transition: { 
+                    type: "spring", 
+                    stiffness: 400, 
+                    damping: 10 
+                  }
+                }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <CustomButton to="/registration" variant="accent" size="lg" className="group">
                    Register Now
@@ -176,9 +224,17 @@ const Hero = () => {
               </motion.div>
               
               <motion.div
-                whileHover={{ scale: 1.05, y: -5 }}
+                variants={transitionVariants.itemVariants}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -5,
+                  transition: { 
+                    type: "spring", 
+                    stiffness: 400, 
+                    damping: 10 
+                  }
+                }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 className="inline-block"
               >
                 <CustomButton 
@@ -195,166 +251,111 @@ const Hero = () => {
           
           <motion.div
             className="relative"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            variants={transitionVariants.scaleVariants}
+            initial="initial"
+            animate="animate"
           >
             <motion.div 
               className="absolute top-5 left-0 w-32 h-32 border-t-2 border-l-2 border-gold-300/30 -translate-x-8 -translate-y-8 rounded-tl-3xl"
-              initial={{ opacity: 0, x: 20, y: 20 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 1, delay: 1.2 }}
+              variants={transitionVariants.slideInUp}
             />
             <motion.div 
               className="absolute bottom-5 right-0 w-32 h-32 border-b-2 border-r-2 border-gold-300/30 translate-x-8 translate-y-8 rounded-br-3xl"
-              initial={{ opacity: 0, x: -20, y: -20 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 1, delay: 1.4 }}
+              variants={transitionVariants.slideInDown}
             />
             
             <motion.div
-              className="absolute -top-5 -left-5 w-20 h-1 bg-gradient-to-r from-gold-500/0 via-gold-400 to-gold-500/0"
-              animate={{ 
-                x: [0, 15, 0],
-                opacity: [0.2, 0.6, 0.2],
-                rotate: [0, 10, 0]
-              }}
-              transition={{ duration: 6, repeat: Infinity, repeatType: "reverse" }}
-            />
-            <motion.div
-              className="absolute -bottom-5 -right-5 w-20 h-1 bg-gradient-to-r from-gold-500/0 via-gold-400 to-gold-500/0"
-              animate={{ 
-                x: [0, -15, 0],
-                opacity: [0.2, 0.6, 0.2],
-                rotate: [0, -10, 0]
-              }}
-              transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", delay: 1 }}
-            />
-            <motion.div
-              className="absolute -right-5 top-1/4 h-20 w-1 bg-gradient-to-b from-diplomatic-500/0 via-diplomatic-400 to-diplomatic-500/0"
-              animate={{ 
-                y: [0, 15, 0],
-                opacity: [0.2, 0.6, 0.2],
-              }}
-              transition={{ duration: 7, repeat: Infinity, repeatType: "reverse", delay: 2 }}
-            />
-            <motion.div
-              className="absolute -left-5 bottom-1/4 h-20 w-1 bg-gradient-to-b from-diplomatic-500/0 via-diplomatic-400 to-diplomatic-500/0"
-              animate={{ 
-                y: [0, -15, 0],
-                opacity: [0.2, 0.6, 0.2],
-              }}
-              transition={{ duration: 7, repeat: Infinity, repeatType: "reverse", delay: 2.5 }}
-            />
-            
-            <motion.div 
-              className="absolute -top-10 -left-10 w-40 h-1 bg-gradient-to-r from-diplomatic-500/0 via-diplomatic-400 to-diplomatic-500/0"
-              animate={{ 
-                x: [0, 30, 0],
-                opacity: [0.3, 0.7, 0.3],
-                rotate: [0, 5, 0]
-              }}
-              transition={{ duration: 8, repeat: Infinity, repeatType: "reverse" }}
-            />
-            <motion.div 
-              className="absolute -bottom-10 -right-10 w-40 h-1 bg-gradient-to-r from-gold-500/0 via-gold-400 to-gold-500/0"
-              animate={{ 
-                x: [0, -30, 0],
-                opacity: [0.3, 0.7, 0.3],
-                rotate: [0, -5, 0]
-              }}
-              transition={{ duration: 8, repeat: Infinity, repeatType: "reverse", delay: 1 }}
-            />
-            
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 shadow-elegant relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold-500/5 via-transparent to-diplomatic-500/5 opacity-30"></div>
+              className="relative z-10 bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 shadow-2xl"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-diplomatic-800/50 to-diplomatic-900/50 rounded-xl"></div>
+              <div className="absolute inset-0 bg-noise opacity-10 mix-blend-soft-light rounded-xl"></div>
               
-              <motion.div 
-                className="text-center mb-6 relative z-10"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-              >
-                <h2 className="text-2xl font-display font-bold text-white mb-2">Conference Countdown</h2>
-                <p className="text-white/70">Mark your calendars for the big event</p>
-              </motion.div>
+              <div className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-diplomatic-800 border-4 border-diplomatic-700 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gold-300 to-gold-500 animate-pulse"></div>
+              </div>
               
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 1 }}
-                className="relative z-10"
-              >
-                <CountdownTimer targetDate={conferenceDate} />
-              </motion.div>
+              <div className="absolute -bottom-6 -right-6 w-12 h-12 rounded-full bg-diplomatic-800 border-4 border-diplomatic-700 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gold-300 to-gold-500 animate-pulse"></div>
+              </div>
               
-              <motion.div 
-                className="mt-6 space-y-3 text-white/80 relative z-10"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.2 }}
-              >
+              <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-4 w-2 h-16 bg-diplomatic-700 rounded-r-full"></div>
+              <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-4 w-2 h-16 bg-diplomatic-700 rounded-l-full"></div>
+              
+              <div className="relative z-10 bg-diplomatic-800/80 backdrop-blur-sm rounded-lg p-5 border border-white/5 shadow-inner">
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 rounded-lg"></div>
+                <div className="absolute inset-0 bg-noise opacity-10 mix-blend-soft-light rounded-lg"></div>
+                
                 <motion.div 
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 1.3 }}
+                  className="text-center mb-6 relative z-10"
+                  variants={transitionVariants.fadeVariants}
                 >
-                  <Calendar className="text-gold-300" size={18} />
-                  <span>April 2, 2025</span>
+                  <h2 className="text-2xl font-display font-bold text-white mb-2">Conference Countdown</h2>
+                  <p className="text-white/70">Mark your calendars for the big event</p>
+                </motion.div>
+                
+                <motion.div
+                  variants={transitionVariants.fadeVariants}
+                  className="relative z-10"
+                >
+                  <CountdownTimer targetDate={conferenceDate} />
                 </motion.div>
                 
                 <motion.div 
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 1.5 }}
+                  className="mt-6 space-y-3 text-white/80 relative z-10"
+                  variants={transitionVariants.fadeVariants}
                 >
-                  <Clock className="text-gold-300" size={18} />
-                  <span>9:00 AM - 4:00 PM</span>
+                  <motion.div 
+                    className="flex items-center gap-3"
+                    variants={transitionVariants.slideInLeft}
+                  >
+                    <Calendar className="text-gold-300" size={18} />
+                    <span>April 2, 2025</span>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="flex items-center gap-3"
+                    variants={transitionVariants.slideInLeft}
+                  >
+                    <Clock className="text-gold-300" size={18} />
+                    <span>9:00 AM - 4:00 PM</span>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="flex items-center gap-3"
+                    variants={transitionVariants.slideInLeft}
+                  >
+                    <MapPin className="text-gold-300" size={18} />
+                    <span>{conferenceLocation}</span>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="flex items-center gap-3"
+                    variants={transitionVariants.slideInLeft}
+                  >
+                    <Users className="text-gold-300" size={18} />
+                    <span>80 delegates across Uzbekistan</span>
+                  </motion.div>
                 </motion.div>
-                
-                <motion.div 
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 1.7 }}
-                >
-                  <MapPin className="text-gold-300" size={18} />
-                  <span>{conferenceLocation}</span>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 1.9 }}
-                >
-                  <Users className="text-gold-300" size={18} />
-                  <span>80 delegates across Uzbekistan</span>
-                </motion.div>
-              </motion.div>
               
-              <motion.div 
-                className="mt-6 pt-6 border-t border-white/10 text-center relative z-10"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 2.1 }}
-              >
-                <Link 
-                  to="/schedule" 
-                  className="text-gold-300 hover:text-gold-200 inline-flex items-center gap-1 transition-colors"
+                <motion.div 
+                  className="mt-6 pt-6 border-t border-white/10 text-center relative z-10"
+                  variants={transitionVariants.fadeVariants}
                 >
-                  <span>View Full Schedule</span>
-                  <ChevronRight size={16} />
-                </Link>
-              </motion.div>
-            </div>
+                  <Link 
+                    to="/schedule" 
+                    className="text-gold-300 hover:text-gold-400 text-sm font-medium inline-flex items-center gap-1"
+                  >
+                    View Full Schedule
+                    <ChevronRight size={14} />
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default Hero;
