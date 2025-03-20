@@ -30,15 +30,15 @@ export default function Footer() {
           {/* About */}
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-full bg-[#0EA5E9] flex items-center justify-center overflow-hidden">
+              <div className="w-10 h-10 rounded-full bg-diplomatic-800 flex items-center justify-center overflow-hidden">
                 <img src="/lovable-uploads/58911c41-3ed8-4807-8789-5df7d2fff02c.png" alt="FPSMUN Logo" className="w-8 h-8 object-contain" />
               </div>
               <div className="font-display">
                 <span className="font-bold text-white">FPS</span>
-                <span className="text-blue-200">MUN</span>
+                <span className="text-white">MUN</span>
               </div>
             </div>
-            <p className="text-blue-200 mb-6 text-sm sm:text-base">
+            <p className="text-neutral-300 mb-6 text-sm sm:text-base">
               Join us for an enriching diplomatic simulation that brings together students from around the world to discuss pressing global issues.
             </p>
             <div className="flex space-x-4">

@@ -15,10 +15,10 @@ const NavbarLogo: React.FC<NavbarLogoProps> = ({ scrolled }) => {
       <motion.div 
         whileHover={{ scale: 1.1 }}
         transition={{ duration: 0.5, type: "spring", stiffness: 300 }}
-        className="w-10 h-10 rounded-full bg-[#0EA5E9] flex items-center justify-center overflow-hidden shadow-glow relative"
+        className="w-10 h-10 rounded-full bg-diplomatic-800 flex items-center justify-center overflow-hidden shadow-glow relative"
       >
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-blue-600/0 via-blue-600/20 to-blue-600/0"
+          className="absolute inset-0 bg-gradient-to-r from-diplomatic-700/0 via-diplomatic-700/20 to-diplomatic-700/0"
           animate={{ x: ["-100%", "200%"] }}
           transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
         />
@@ -32,7 +32,7 @@ const NavbarLogo: React.FC<NavbarLogoProps> = ({ scrolled }) => {
       </motion.div>
       <div className={scrolled ? "text-white" : "text-white"}>
         <motion.span 
-          className="font-bold"
+          className="font-bold text-white"
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
         >
