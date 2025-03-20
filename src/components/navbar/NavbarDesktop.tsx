@@ -168,7 +168,7 @@ const NavbarDesktop: React.FC<NavbarDesktopProps> = ({ scrolled, isHomePage, nav
       >
         <Link 
           to="/registration" 
-          className="bg-gold-500 hover:bg-gold-600 text-white font-medium py-2 px-4 rounded-md transition-all duration-300 flex items-center gap-2 shadow-gold"
+          className="bg-gold-400 hover:bg-gold-400/90 text-diplomatic-900 font-medium py-2 px-4 rounded-md transition-all duration-300 flex items-center gap-2 shadow-gold"
         >
           <Globe size={16} />
           <span>Register</span>

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
@@ -11,7 +10,7 @@ const buttonVariants = cva(
       variant: {
         primary: "bg-diplomatic-600 text-white hover:bg-diplomatic-700 shadow-md hover:shadow-lg hover:-translate-y-0.5",
         secondary: "bg-neutral-100 text-diplomatic-800 hover:bg-neutral-200 border border-neutral-200 shadow-sm hover:shadow-md hover:-translate-y-0.5",
-        accent: "bg-gold-500 text-white hover:bg-gold-600 shadow-md hover:shadow-lg hover:-translate-y-0.5",
+        accent: "bg-gold-400 text-diplomatic-900 hover:bg-gold-400/90 shadow-md hover:shadow-lg hover:-translate-y-0.5",
         outline: "border border-diplomatic-200 bg-white text-diplomatic-700 hover:bg-diplomatic-50 hover:border-diplomatic-300 shadow-sm hover:shadow-md hover:-translate-y-0.5",
         ghost: "text-diplomatic-700 hover:bg-diplomatic-50 hover:text-diplomatic-800",
         link: "text-diplomatic-600 underline-offset-4 hover:underline hover:text-diplomatic-700 p-0 h-auto",

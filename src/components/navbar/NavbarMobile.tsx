@@ -216,7 +216,7 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
             >
               <Link 
                 to="/registration" 
-                className="bg-gold-500 hover:bg-gold-600 text-white font-medium py-3 px-4 rounded-md transition-all duration-300 w-full flex justify-center items-center gap-2 shadow-gold"
+                className="bg-gold-400 hover:bg-gold-400/90 text-diplomatic-900 font-medium py-3 px-4 rounded-md transition-all duration-300 w-full flex justify-center items-center gap-2 shadow-gold"
                 onClick={toggleMenu}
               >
                 <Globe size={18} />

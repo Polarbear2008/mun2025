@@ -14,16 +14,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 224 85% 33%;
+    --primary: 219 53% 27%;
     --primary-foreground: 210 40% 98%;
  
-    --secondary: 210 40% 96.1%;
+    --secondary: 39 93% 54%;
     --secondary-foreground: 222.2 47.4% 11.2%;
  
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 210 40% 96.1%;
+    --accent: 39 93% 54%;
     --accent-foreground: 222.2 47.4% 11.2%;
  
     --destructive: 0 84.2% 60.2%;
@@ -40,7 +40,7 @@
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 210 40% 98%;
     --sidebar-primary-foreground: 223 98% 11%;
-    --sidebar-accent: 206 100% 30%;
+    --sidebar-accent: 39 93% 54%;
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 223 60% 20%;
     --sidebar-ring: 210 40% 98%;
@@ -106,7 +106,7 @@
   }
   
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md bg-gold-400 px-4 py-2 text-sm font-medium text-diplomatic-900 shadow-md transition-all hover:-translate-y-0.5 hover:bg-gold-500 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:bg-gold-500 dark:text-diplomatic-900 dark:hover:bg-gold-400;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md bg-gold-400 px-4 py-2 text-sm font-medium text-diplomatic-900 shadow-md transition-all hover:-translate-y-0.5 hover:bg-gold-400/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:bg-gold-400 dark:text-diplomatic-900 dark:hover:bg-gold-400/90;
   }
   
   .btn-outline {
@@ -122,7 +122,7 @@
   }
   
   .chip-gold {
-    @apply inline-block rounded-full bg-gold-100 px-3 py-1 text-sm font-medium text-gold-600 dark:bg-gold-900/50 dark:text-gold-300;
+    @apply inline-block rounded-full bg-gold-100 px-3 py-1 text-sm font-medium text-gold-400 dark:bg-gold-900/50 dark:text-gold-400;
   }
   
   .section {
@@ -134,7 +134,7 @@
   }
   
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 to-gold-600 dark:from-gold-300 dark:to-gold-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 to-gold-500 dark:from-gold-400 dark:to-gold-500;
   }
 }
 
@@ -156,7 +156,7 @@
   }
   
   .shadow-gold {
-    @apply shadow-[0_4px_20px_rgba(251,219,101,0.25)] dark:shadow-[0_4px_20px_rgba(251,219,101,0.15)];
+    @apply shadow-[0_4px_20px_rgba(247,163,28,0.25)] dark:shadow-[0_4px_20px_rgba(247,163,28,0.15)];
   }
 }
 

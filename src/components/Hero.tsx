@@ -99,12 +99,12 @@ const Hero = () => {
         {particles.map((particle) => (
           <motion.div
             key={particle.id}
-            className="absolute rounded-full bg-gold-300"
+            className="absolute rounded-full bg-gold-400"
             style={{ 
               width: `${particle.size}px`, 
               height: `${particle.size}px`,
               opacity: particle.opacity,
-              boxShadow: `0 0 ${particle.size}px rgba(255, 215, 0, 0.15)`
+              boxShadow: `0 0 ${particle.size}px rgba(247, 163, 28, 0.15)`
             }}
             initial={{ 
               x: particle.initialX, 
@@ -147,7 +147,7 @@ const Hero = () => {
           }}
         />
         <motion.div 
-          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-gold-600 blur-3xl"
+          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-gold-400 blur-3xl"
           animate={{ 
             scale: [1, 1.1, 1],
             opacity: [0.05, 0.08, 0.05],
@@ -185,7 +185,7 @@ const Hero = () => {
               </motion.span>
               <motion.span 
                 variants={transitionVariants.fadeVariants}
-                className="block text-gold-300 mt-2 min-h-[40px]"
+                className="block text-gold-400 mt-2 min-h-[40px]"
               >
                 {currentPhrase}
                 <span className="animate-pulse ml-1">|</span>
@@ -256,11 +256,11 @@ const Hero = () => {
             animate="animate"
           >
             <motion.div 
-              className="absolute top-5 left-0 w-32 h-32 border-t-2 border-l-2 border-gold-300/30 -translate-x-8 -translate-y-8 rounded-tl-3xl"
+              className="absolute top-5 left-0 w-32 h-32 border-t-2 border-l-2 border-gold-400/30 -translate-x-8 -translate-y-8 rounded-tl-3xl"
               variants={transitionVariants.slideInUp}
             />
             <motion.div 
-              className="absolute bottom-5 right-0 w-32 h-32 border-b-2 border-r-2 border-gold-300/30 translate-x-8 translate-y-8 rounded-br-3xl"
+              className="absolute bottom-5 right-0 w-32 h-32 border-b-2 border-r-2 border-gold-400/30 translate-x-8 translate-y-8 rounded-br-3xl"
               variants={transitionVariants.slideInDown}
             />
             
@@ -271,11 +271,11 @@ const Hero = () => {
               <div className="absolute inset-0 bg-noise opacity-10 mix-blend-soft-light rounded-xl"></div>
               
               <div className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-diplomatic-800 border-4 border-diplomatic-700 flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gold-300 to-gold-500 animate-pulse"></div>
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 animate-pulse"></div>
               </div>
               
               <div className="absolute -bottom-6 -right-6 w-12 h-12 rounded-full bg-diplomatic-800 border-4 border-diplomatic-700 flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gold-300 to-gold-500 animate-pulse"></div>
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 animate-pulse"></div>
               </div>
               
               <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-4 w-2 h-16 bg-diplomatic-700 rounded-r-full"></div>
@@ -308,7 +308,7 @@ const Hero = () => {
                     className="flex items-center gap-3"
                     variants={transitionVariants.slideInLeft}
                   >
-                    <Calendar className="text-gold-300" size={18} />
+                    <Calendar className="text-gold-400" size={18} />
                     <span>April 2, 2025</span>
                   </motion.div>
                   
@@ -316,7 +316,7 @@ const Hero = () => {
                     className="flex items-center gap-3"
                     variants={transitionVariants.slideInLeft}
                   >
-                    <Clock className="text-gold-300" size={18} />
+                    <Clock className="text-gold-400" size={18} />
                     <span>9:00 AM - 4:00 PM</span>
                   </motion.div>
                   
@@ -324,7 +324,7 @@ const Hero = () => {
                     className="flex items-center gap-3"
                     variants={transitionVariants.slideInLeft}
                   >
-                    <MapPin className="text-gold-300" size={18} />
+                    <MapPin className="text-gold-400" size={18} />
                     <span>{conferenceLocation}</span>
                   </motion.div>
                   
@@ -332,7 +332,7 @@ const Hero = () => {
                     className="flex items-center gap-3"
                     variants={transitionVariants.slideInLeft}
                   >
-                    <Users className="text-gold-300" size={18} />
+                    <Users className="text-gold-400" size={18} />
                     <span>80 delegates across Uzbekistan</span>
                   </motion.div>
                 </motion.div>
@@ -343,7 +343,7 @@ const Hero = () => {
                 >
                   <Link 
                     to="/schedule" 
-                    className="text-gold-300 hover:text-gold-400 text-sm font-medium inline-flex items-center gap-1"
+                    className="text-gold-400 hover:text-gold-500 text-sm font-medium inline-flex items-center gap-1"
                   >
                     View Full Schedule
                     <ChevronRight size={14} />
