@@ -25,6 +25,17 @@ const Hero = () => {
   const deletingSpeed = 50; // ms per character when deleting
   const pauseDuration = 1500; // pause between phrases
   const pauseBeforeNew = 800; // pause before starting a new phrase
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     setIsVisible(true);
@@ -55,8 +66,7 @@ const Hero = () => {
     
     const timeout = setTimeout(() => {
       const nextDelay = handleTyping();
-      if (nextDelay) clearTimeout(timeout);
-      return setTimeout(() => handleTyping(), nextDelay);
+      setTimeout(() => handleTyping(), nextDelay);
     }, typingSpeed);
     
     return () => clearTimeout(timeout);
@@ -185,10 +195,10 @@ const Hero = () => {
               </motion.span>
               <motion.span 
                 variants={transitionVariants.fadeVariants}
-                className="block text-gold-400 mt-2 min-h-[40px]"
+                className="block text-gold-400 mt-2 min-h-[40px] md:min-h-[48px]"
               >
-                {currentPhrase}
-                <span className="animate-pulse ml-1">|</span>
+                <span className="inline-block">{currentPhrase}</span>
+                <span className="animate-pulse ml-1 inline-block">|</span>
               </motion.span>
             </h1>
             
