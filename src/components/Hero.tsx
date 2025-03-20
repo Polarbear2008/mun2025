@@ -86,7 +86,7 @@ const Hero = () => {
   }));
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-diplomatic-900 via-diplomatic-800 to-diplomatic-700">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-diplomatic-900 via-diplomatic-800 to-diplomatic-700 py-10 sm:py-16">
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
           className="absolute top-0 left-0 w-full h-full bg-world-map bg-no-repeat bg-center opacity-5"
@@ -162,12 +162,12 @@ const Hero = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
           <motion.div
             variants={transitionVariants.containerVariants}
             initial="initial"
             animate="animate"
-            className="text-white px-4 sm:px-0"
+            className="text-white px-4 sm:px-0 order-2 lg:order-1"
           >
             <motion.span 
               variants={transitionVariants.slideInDown}
@@ -251,47 +251,47 @@ const Hero = () => {
           </motion.div>
           
           <motion.div
-            className="relative mt-8 lg:mt-0 px-4 sm:px-0"
+            className="relative mt-0 mb-8 lg:mb-0 lg:mt-0 px-4 sm:px-0 order-1 lg:order-2"
             variants={transitionVariants.scaleVariants}
             initial="initial"
             animate="animate"
           >
             <motion.div 
-              className="absolute top-5 left-0 w-32 h-32 border-t-2 border-l-2 border-gold-400/30 -translate-x-8 -translate-y-8 rounded-tl-3xl"
+              className="absolute top-5 left-0 w-32 h-32 border-t-2 border-l-2 border-gold-400/30 -translate-x-8 -translate-y-8 rounded-tl-3xl hidden sm:block"
               variants={transitionVariants.slideInUp}
             />
             <motion.div 
-              className="absolute bottom-5 right-0 w-32 h-32 border-b-2 border-r-2 border-gold-400/30 translate-x-8 translate-y-8 rounded-br-3xl"
+              className="absolute bottom-5 right-0 w-32 h-32 border-b-2 border-r-2 border-gold-400/30 translate-x-8 translate-y-8 rounded-br-3xl hidden sm:block"
               variants={transitionVariants.slideInDown}
             />
             
             <motion.div
-              className="relative z-10 bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 shadow-2xl"
+              className="relative z-10 bg-white/5 backdrop-blur-md rounded-xl p-4 sm:p-6 border border-white/10 shadow-2xl"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-diplomatic-800/50 to-diplomatic-900/50 rounded-xl"></div>
               <div className="absolute inset-0 bg-noise opacity-10 mix-blend-soft-light rounded-xl"></div>
               
-              <div className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-diplomatic-800 border-4 border-diplomatic-700 flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 animate-pulse"></div>
+              <div className="absolute -top-6 -left-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-diplomatic-800 border-4 border-diplomatic-700 flex items-center justify-center">
+                <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 animate-pulse"></div>
               </div>
               
-              <div className="absolute -bottom-6 -right-6 w-12 h-12 rounded-full bg-diplomatic-800 border-4 border-diplomatic-700 flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 animate-pulse"></div>
+              <div className="absolute -bottom-6 -right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-diplomatic-800 border-4 border-diplomatic-700 flex items-center justify-center">
+                <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 animate-pulse"></div>
               </div>
               
-              <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-4 w-2 h-16 bg-diplomatic-700 rounded-r-full"></div>
-              <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-4 w-2 h-16 bg-diplomatic-700 rounded-l-full"></div>
+              <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-4 w-2 h-16 bg-diplomatic-700 rounded-r-full hidden sm:block"></div>
+              <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-4 w-2 h-16 bg-diplomatic-700 rounded-l-full hidden sm:block"></div>
               
-              <div className="relative z-10 bg-diplomatic-800/80 backdrop-blur-sm rounded-lg p-5 border border-white/5 shadow-inner">
+              <div className="relative z-10 bg-diplomatic-800/80 backdrop-blur-sm rounded-lg p-4 sm:p-5 border border-white/5 shadow-inner">
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 rounded-lg"></div>
                 <div className="absolute inset-0 bg-noise opacity-10 mix-blend-soft-light rounded-lg"></div>
                 
                 <motion.div 
-                  className="text-center mb-6 relative z-10"
+                  className="text-center mb-4 sm:mb-6 relative z-10"
                   variants={transitionVariants.fadeVariants}
                 >
-                  <h2 className="text-2xl font-display font-bold text-white mb-2">Conference Countdown</h2>
-                  <p className="text-white/70">Mark your calendars for the big event</p>
+                  <h2 className="text-xl sm:text-2xl font-display font-bold text-white mb-1 sm:mb-2">Conference Countdown</h2>
+                  <p className="text-sm sm:text-base text-white/70">Mark your calendars for the big event</p>
                 </motion.div>
                 
                 <motion.div
@@ -301,40 +301,40 @@ const Hero = () => {
                   <CountdownTimer targetDate={conferenceDate} />
                 </motion.div>
                 
-                <motion.div 
-                  className="mt-6 space-y-3 text-white/80 relative z-10"
-                  variants={transitionVariants.fadeVariants}
+                <motion.div
+                  variants={transitionVariants.staggerContainerVariants}
+                  className="mt-6 space-y-3 relative z-10"
                 >
                   <motion.div 
-                    className="flex items-center gap-3"
-                    variants={transitionVariants.slideInLeft}
+                    variants={transitionVariants.staggerItemVariants}
+                    className="flex items-center text-sm sm:text-base text-white"
                   >
-                    <Calendar className="text-gold-400" size={18} />
+                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 mr-2.5" />
                     <span>April 2, 2025</span>
                   </motion.div>
                   
                   <motion.div 
-                    className="flex items-center gap-3"
-                    variants={transitionVariants.slideInLeft}
+                    variants={transitionVariants.staggerItemVariants}
+                    className="flex items-center text-sm sm:text-base text-white"
                   >
-                    <Clock className="text-gold-400" size={18} />
+                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 mr-2.5" />
                     <span>9:00 AM - 4:00 PM</span>
                   </motion.div>
                   
                   <motion.div 
-                    className="flex items-center gap-3"
-                    variants={transitionVariants.slideInLeft}
+                    variants={transitionVariants.staggerItemVariants}
+                    className="flex items-center text-sm sm:text-base text-white"
                   >
-                    <MapPin className="text-gold-400" size={18} />
-                    <span>{conferenceLocation}</span>
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 mr-2.5" />
+                    <span>Fergana Presidential School, Uzbekistan</span>
                   </motion.div>
                   
                   <motion.div 
-                    className="flex items-center gap-3"
-                    variants={transitionVariants.slideInLeft}
+                    variants={transitionVariants.staggerItemVariants}
+                    className="flex items-center text-sm sm:text-base text-white"
                   >
-                    <Users className="text-gold-400" size={18} />
-                    <span>80 delegates across Uzbekistan</span>
+                    <Users className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 mr-2.5" />
+                    <span>150+ Expected Delegates</span>
                   </motion.div>
                 </motion.div>
               
