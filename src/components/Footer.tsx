@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from './NewsletterForm';
@@ -7,15 +6,15 @@ import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, ArrowRight } from 'l
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-[#00235c] text-white pt-16 pb-8">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         {/* Newsletter section */}
-        <div className="relative z-10 -mt-28 mb-16">
+        <div className="relative z-10 -mt-28 mb-12 md:mb-16">
           <div className="max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-elegant">
-            <div className="bg-gradient-to-r from-[#002870] to-[#003694] p-8 md:p-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="bg-gradient-to-r from-[#002870] to-[#003694] p-6 md:p-8 lg:p-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-display font-semibold text-white mb-4">Stay Updated</h3>
-                  <p className="text-blue-100 mb-0">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-white mb-3 md:mb-4">Stay Updated</h3>
+                  <p className="text-blue-100 mb-0 text-sm sm:text-base">
                     Get the latest news and updates about our upcoming conference.
                   </p>
                 </div>
@@ -27,7 +26,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* About */}
           <div>
             <div className="flex items-center gap-2 mb-6">
@@ -39,7 +38,7 @@ export default function Footer() {
                 <span className="text-blue-200">MUN</span>
               </div>
             </div>
-            <p className="text-blue-200 mb-6">
+            <p className="text-blue-200 mb-6 text-sm sm:text-base">
               Join us for an enriching diplomatic simulation that brings together students from around the world to discuss pressing global issues.
             </p>
             <div className="flex space-x-4">
@@ -93,15 +92,15 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Mail className="mr-3 shrink-0 mt-1 text-blue-300" size={18} />
-                <span className="text-blue-200">info@fpsmun.org</span>
+                <span className="text-blue-200 text-sm sm:text-base">info@fpsmun.org</span>
               </li>
               <li className="flex items-start">
                 <Phone className="mr-3 shrink-0 mt-1 text-blue-300" size={18} />
-                <span className="text-blue-200">+1 (555) 123-4567</span>
+                <span className="text-blue-200 text-sm sm:text-base">+1 (555) 123-4567</span>
               </li>
               <li className="flex items-start">
                 <MapPin className="mr-3 shrink-0 mt-1 text-blue-300" size={18} />
-                <span className="text-blue-200">
+                <span className="text-blue-200 text-sm sm:text-base">
                   FPSMUN Conference Center<br />
                   123 Diplomat Avenue<br />
                   New York, NY 10001
@@ -132,7 +131,7 @@ export default function Footer() {
         
         <div className="mt-12 pt-8 border-t border-blue-800/50 text-center text-blue-400 text-sm">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p>© {currentYear} FPSMUN. All rights reserved.</p>
+            <p> {currentYear} FPSMUN. All rights reserved.</p>
             <p className="mt-2 md:mt-0">Designed with Numonov Samandar</p>
           </div>
         </div>

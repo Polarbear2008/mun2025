@@ -162,21 +162,21 @@ const Hero = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
           <motion.div
             variants={transitionVariants.containerVariants}
             initial="initial"
             animate="animate"
-            className="text-white"
+            className="text-white px-4 sm:px-0"
           >
             <motion.span 
               variants={transitionVariants.slideInDown}
-              className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-sm text-sm font-medium mb-6"
+              className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-sm text-sm font-medium mb-4 md:mb-6"
             >
               Model United Nations
             </motion.span>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 md:mb-6">
               <motion.span
                 variants={transitionVariants.slideInLeft}
                 className="block text-white"
@@ -194,7 +194,7 @@ const Hero = () => {
             
             <motion.p 
               variants={transitionVariants.slideInLeft}
-              className="text-lg text-white/80 mb-8 max-w-xl"
+              className="text-base md:text-lg text-white/80 mb-6 md:mb-8 max-w-xl"
             >
               Join delegates from across Uzbekistan to debate pressing global issues, develop 
               leadership skills, and forge valuable connections at our prestigious Model UN conference.
@@ -202,7 +202,7 @@ const Hero = () => {
             
             <motion.div 
               variants={transitionVariants.containerVariants}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3 md:gap-4"
             >
               <motion.div
                 variants={transitionVariants.itemVariants}
@@ -216,8 +216,9 @@ const Hero = () => {
                   }
                 }}
                 whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto"
               >
-                <CustomButton to="/registration" variant="accent" size="lg" className="group">
+                <CustomButton to="/registration" variant="accent" size="lg" className="group w-full sm:w-auto">
                    Register Now
                   <ChevronRight className="transition-transform group-hover:translate-x-1" size={16} />
                 </CustomButton>
@@ -235,13 +236,13 @@ const Hero = () => {
                   }
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-block"
+                className="w-full sm:w-auto"
               >
                 <CustomButton 
                   to="/committees" 
                   variant="outline" 
                   size="lg" 
-                  className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/50 whitespace-nowrap"
+                  className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/50 w-full sm:w-auto"
                 >
                   Explore Committees
                 </CustomButton>
@@ -250,7 +251,7 @@ const Hero = () => {
           </motion.div>
           
           <motion.div
-            className="relative"
+            className="relative mt-8 lg:mt-0 px-4 sm:px-0"
             variants={transitionVariants.scaleVariants}
             initial="initial"
             animate="animate"

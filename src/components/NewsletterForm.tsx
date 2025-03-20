@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useToast } from "../hooks/use-toast";
 
@@ -109,14 +108,14 @@ export default function NewsletterForm({
     <div className="space-y-4">
       <form 
         onSubmit={handleSubmit} 
-        className={`flex flex-col sm:flex-row gap-3 ${className}`}
+        className={`flex flex-col sm:flex-row gap-2 sm:gap-3 ${className}`}
       >
         <input 
           type="email" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email address"
-          className={`flex-grow px-4 py-3 rounded-lg text-sm focus:outline-none focus:ring-2 ${
+          className={`flex-grow px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm focus:outline-none focus:ring-2 ${
             isDark 
               ? 'focus:ring-gold-400 bg-white/10 border border-white/10 text-white placeholder:text-white/40' 
               : 'focus:ring-blue-300 border border-neutral-200'
@@ -127,8 +126,8 @@ export default function NewsletterForm({
           type="submit"
           className={`${
             isDark
-              ? 'btn-accent h-auto py-3' 
-              : 'bg-white text-[#002870] hover:bg-blue-50 font-medium py-3 px-5 rounded-lg transition-colors whitespace-nowrap'
+              ? 'btn-accent h-auto py-2 sm:py-3 text-sm sm:text-base' 
+              : 'bg-white text-[#002870] hover:bg-blue-50 font-medium py-2 sm:py-3 px-4 sm:px-5 rounded-lg transition-colors whitespace-nowrap text-sm sm:text-base'
           }`}
           disabled={isSubmitting}
         >
@@ -137,17 +136,17 @@ export default function NewsletterForm({
       </form>
       
       {showWebhookInput && (
-        <div className={`p-4 rounded-lg ${isDark ? 'bg-white/5' : 'bg-blue-50'}`}>
-          <p className={`text-sm mb-2 ${isDark ? 'text-white/80' : 'text-blue-800'}`}>
+        <div className={`p-3 sm:p-4 rounded-lg ${isDark ? 'bg-white/5' : 'bg-blue-50'}`}>
+          <p className={`text-xs sm:text-sm mb-2 ${isDark ? 'text-white/80' : 'text-blue-800'}`}>
             Set up Make.com integration by adding your webhook URL:
           </p>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <input
               type="text"
               value={webhookUrl}
               onChange={(e) => setWebhookUrl(e.target.value)}
               placeholder="Paste Make.com webhook URL here"
-              className={`flex-grow px-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 ${
+              className={`flex-grow px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 ${
                 isDark 
                   ? 'focus:ring-gold-400 bg-white/10 border border-white/10 text-white placeholder:text-white/40' 
                   : 'focus:ring-blue-300 border border-neutral-200'
@@ -160,7 +159,7 @@ export default function NewsletterForm({
                 isDark
                   ? 'bg-blue-500 text-white hover:bg-blue-600' 
                   : 'bg-blue-600 text-white hover:bg-blue-700'
-              } px-4 py-2 rounded-lg text-sm font-medium transition-colors`}
+              } px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors mt-2 sm:mt-0`}
             >
               Save
             </button>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 interface CountdownTimerProps {
@@ -43,7 +42,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   }, [targetDate]);
   
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-4 gap-2 sm:gap-4">
       {[
         { value: timeLeft.days, label: 'Days' },
         { value: timeLeft.hours, label: 'Hours' },
@@ -51,13 +50,13 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
         { value: timeLeft.seconds, label: 'Seconds' }
       ].map((item, index) => (
         <div key={index} className="flex flex-col items-center">
-          <div className="w-full aspect-square bg-neutral-50 rounded-xl border border-neutral-100 flex items-center justify-center shadow-subtle mb-2 relative overflow-hidden">
+          <div className="w-full aspect-square bg-neutral-50 rounded-xl border border-neutral-100 flex items-center justify-center shadow-subtle mb-1 sm:mb-2 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-white to-neutral-50"></div>
-            <span className="text-3xl md:text-4xl font-display font-bold text-diplomatic-600 relative">
+            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold text-diplomatic-600 relative">
               {String(item.value).padStart(2, '0')}
             </span>
           </div>
-          <span className="text-xs text-neutral-500 font-medium">{item.label}</span>
+          <span className="text-[10px] sm:text-xs text-neutral-500 font-medium">{item.label}</span>
         </div>
       ))}
     </div>
