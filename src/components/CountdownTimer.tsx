@@ -11,17 +11,6 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
     minutes: 0,
     seconds: 0
   });
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  
-  // Check if device is mobile
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
   
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -53,7 +42,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   }, [targetDate]);
   
   return (
-    <div className="grid grid-cols-4 gap-1 sm:gap-2 md:gap-4">
+    <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4">
       {[
         { value: timeLeft.days, label: 'Days' },
         { value: timeLeft.hours, label: 'Hours' },
@@ -63,21 +52,11 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
         <div key={index} className="flex flex-col items-center">
           <div className="w-full aspect-square bg-neutral-50 rounded-lg sm:rounded-xl border border-neutral-100 flex items-center justify-center shadow-subtle mb-1 sm:mb-2 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-white to-neutral-50"></div>
-            <span className={`font-display font-bold text-diplomatic-600 relative ${
-              isMobile 
-                ? 'text-lg' 
-                : 'text-xl sm:text-2xl md:text-3xl lg:text-4xl'
-            }`}>
+            <span className="text-base xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold text-diplomatic-600 relative">
               {String(item.value).padStart(2, '0')}
             </span>
           </div>
-          <span className={`font-medium text-neutral-500 ${
-            isMobile 
-              ? 'text-[9px]' 
-              : 'text-[10px] sm:text-xs'
-          }`}>
-            {item.label}
-          </span>
+          <span className="text-[8px] xs:text-[10px] sm:text-xs text-neutral-500 font-medium">{item.label}</span>
         </div>
       ))}
     </div>

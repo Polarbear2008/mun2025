@@ -25,17 +25,6 @@ const Hero = () => {
   const deletingSpeed = 50; // ms per character when deleting
   const pauseDuration = 1500; // pause between phrases
   const pauseBeforeNew = 800; // pause before starting a new phrase
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  // Check if device is mobile
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     setIsVisible(true);
@@ -66,7 +55,8 @@ const Hero = () => {
     
     const timeout = setTimeout(() => {
       const nextDelay = handleTyping();
-      setTimeout(() => handleTyping(), nextDelay);
+      if (nextDelay) clearTimeout(timeout);
+      return setTimeout(() => handleTyping(), nextDelay);
     }, typingSpeed);
     
     return () => clearTimeout(timeout);
@@ -195,16 +185,16 @@ const Hero = () => {
               </motion.span>
               <motion.span 
                 variants={transitionVariants.fadeVariants}
-                className="block text-gold-400 mt-2 min-h-[40px] md:min-h-[48px]"
+                className="block text-gold-400 mt-2 min-h-[40px] text-base sm:text-xl md:text-2xl lg:text-3xl"
               >
-                <span className="inline-block">{currentPhrase}</span>
-                <span className="animate-pulse ml-1 inline-block">|</span>
+                {currentPhrase}
+                <span className="animate-pulse ml-1">|</span>
               </motion.span>
             </h1>
             
             <motion.p 
               variants={transitionVariants.slideInLeft}
-              className="text-base md:text-lg text-white/80 mb-6 md:mb-8 max-w-xl"
+              className="text-sm sm:text-base md:text-lg text-white/80 mb-6 md:mb-8 max-w-xl"
             >
               Join delegates from across Uzbekistan to debate pressing global issues, develop 
               leadership skills, and forge valuable connections at our prestigious Model UN conference.
@@ -212,7 +202,7 @@ const Hero = () => {
             
             <motion.div 
               variants={transitionVariants.containerVariants}
-              className="flex flex-wrap gap-3 md:gap-4"
+              className="flex flex-wrap gap-3 md:gap-4 mb-8 lg:mb-0"
             >
               <motion.div
                 variants={transitionVariants.itemVariants}
