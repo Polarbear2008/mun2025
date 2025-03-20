@@ -1,7 +1,15 @@
 export const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Committees', path: '/committees' },
+  { 
+    name: 'Event Updates', 
+    path: '/event-updates',
+    hasDropdown: true,
+    dropdownItems: [
+      { name: 'Committees', path: '/committees' },
+      { name: 'Schedule', path: '/schedule' },
+    ]
+  },
   { 
     name: 'Past Conferences', 
     path: '/past-conferences',
@@ -12,7 +20,6 @@ export const navLinks = [
       { name: 'Season 3 (2023)', path: '/seasons/3' },
     ]
   },
-  { name: 'Schedule', path: '/schedule' },
   { name: 'Resources', path: '/resources' },
   { name: 'Contact', path: '/contact' },
 ];
